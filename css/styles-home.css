@@ -95,6 +95,18 @@
                 }
             }
             .form-box {
+                
+                p.error {
+                    margin: 5px 0 0 0;
+                    visibility: hidden;
+                    color: rgb(176, 0, 0);
+                    font-size: 13px;
+                    height: 2px;
+                    /* &.with-error {
+                        visibility: visible;
+                    } */
+                }
+                
                 fieldset {
                     margin:20px 0;
                     position: relative;
@@ -104,6 +116,14 @@
                         position: absolute;
                         left: 9px;
                         top: 12px;
+                    }
+                    &.with-error {
+                        input {
+                            border-color: rgb(176, 0, 0);
+                        }
+                        p {
+                            visibility: visible;
+                        }
                     }
                     input {
                         border: 1px solid #ccc;
@@ -115,17 +135,29 @@
                             border: 1px solid var(--corporate-blue);
                             outline: none;
                         }
+                        /* &.with-error {
+                            border-color: rgb(176, 0, 0);
+                        } */
                     }
                     input[type='checkbox']{
                         width: 30px;
                     }
                     &.get-code {
                         display: flex;
+                        margin-bottom: 40px;
+
                         button {
                             margin-left: 10px;
                         }
+                        .error-place {
+                            position: absolute;
+                            bottom: -10px;
+                            
+                        }
                     }
+                    
                 }
+                
                 .remember {
                     display: flex;
                     align-items: center;

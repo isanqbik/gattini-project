@@ -14,7 +14,7 @@
         <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-        
+        <script defer src="./index.js"></script>
     </head>
     <body>
         <div class="home-container">
@@ -41,26 +41,32 @@
                         </nav>
 
                         <div class="form-box">
-                            <form action="dashboard.html">
+                            <form id="loginForm" action="dashboard.html">
                                 <fieldset>
                                     <i class="icon icon-user"></i>
-                                    <input type="text" placeholder="username: admin or user "/>
+                                    <input type="text" id="input-username" placeholder="username: admin or user "/>
+                                    <p id="userError" class="error">
+                                        user must contain 'gattini' and max chars 20 char
+                                    </p>
                                 </fieldset>
                                 <fieldset>
                                     <i class="icon icon-lock"></i>
-                                    <input type="password" placeholder="Password: enter your password "/>
+                                    <input type="password" id="input-password" placeholder="Password: enter your password "/>
+                                    <p id="passError" class="error">
+                                        Password must have between 8 and 20 chars and special char
+                                    </p>
                                 </fieldset>
 
                                 <fieldset class="remember">
                                     <label>
-                                        <input type="checkbox" checked />
+                                        <input type="checkbox" id="rememberme" checked />
                                         Remember me
                                     </label>
                                     <a href="#">Forgot?</a>
                                 </fieldset>
 
                                 <div class="button-set">
-                                    <button class="c-button solid">Sign in</button>
+                                    <button type="submit" class="c-button solid" id="btn-sign-in">Sign in</button>
                                 </div>
                             </form>
                         </div>

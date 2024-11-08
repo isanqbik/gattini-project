@@ -14,7 +14,7 @@
         <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-        
+        <script defer src="./signup.js"></script>
     </head>
     <body>
         <div class="home-container">
@@ -41,27 +41,35 @@
                         </nav>
 
                         <div class="form-box">
-                            <form action="dashboard.html">
+                            <form id="signInForm" action="index.html">
                                 <fieldset>
                                     <i class="icon icon-phone"></i>
-                                    <input type="tel" placeholder="Phone number "/>
+                                    <input type="tel" id="phone-number" placeholder="Phone number "/>
+                                    <p id="telNumberError" class="error">
+                                        Telefon number must be 8 numbers 
+                                    </p>
                                 </fieldset>
                                 <fieldset class="get-code">
                                     <i class="icon icon-lock"></i>
-                                    <input type="text" placeholder="Verification Code "/>
-                                    <button class="c-button outline">Get Code</button>
+                                    <input type="text" id="verification-number" placeholder="Verification Code "/>
+                                    <button id="btnGetCode" class="c-button outline">Get Code</button>
+                                    <div class="error-place">
+                                        <p id="inputVerificationError" class="error">
+                                            Wrong Verification code or missin
+                                        </p>
+                                    </div>
                                 </fieldset>
 
-                                <fieldset class="remember">
+                                <!-- <fieldset class="remember">
                                     <label>
                                         <input type="checkbox" checked />
                                         Remember me
                                     </label>
                                     <a href="#">Forgot?</a>
-                                </fieldset>
+                                </fieldset> -->
 
                                 <div class="button-set">
-                                    <button class="c-button solid">Sign in</button>
+                                    <button id="btn-sign" class="c-button solid">Sign in</button>
                                 </div>
                             </form>
                         </div>
