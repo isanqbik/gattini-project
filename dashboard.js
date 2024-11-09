@@ -52,6 +52,7 @@ function renderCards(lista) {
                     alt="${element.catName.first}"
                     title="${element.catName.first}"
                     />
+                    <div class="spinner"></div>
                 </figure>
                 <div class="card-info">
                     <h2>
@@ -77,5 +78,23 @@ function renderCards(lista) {
             `;
             cardContainer.append(card);
         });
+        
+        const imgs = document.querySelectorAll(".card-img"); 
+
+        imgs.forEach(img => { 
+            img.onload = function() {
+                console.log("La imagen ha sido cargada completamente.");
+                this.nextElementSibling.remove(); 
+            }; 
+            img.onerror = function() { 
+                console.log("Hubo un error al cargar la imagen.");
+            };
+        });
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() { 
+    console.log("dom loaded");
+    
+});
+

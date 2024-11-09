@@ -250,6 +250,14 @@ header {
                     object-fit: contain;
                     z-index: 3;
                 }
+                .spinner {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    
+                    margin-left: -25px;
+                    margin-top: -25px;
+                }
             }
 
             
