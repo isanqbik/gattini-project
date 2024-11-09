@@ -292,6 +292,12 @@ header {
                     line-height: 22px;
                     margin-bottom: 8px;
                 }
+                .extra {
+                    margin:5px 0 15px;
+                    font-size: 13px;
+                    color: #343434;
+                    font-style: italic;
+                }
                 .status {
                     display: flex;
                     align-items: center;

@@ -20,7 +20,13 @@ async function main() {
     //console.log(cats);
 
     let combinedData = cats.map((cat, index) => {
-        return { ...cat, catName: users[index].name, catGender: users[index].gender }
+        return { 
+            ...cat, 
+            catName: users[index].name, 
+            catGender: users[index].gender, 
+            catLocation: users[index].location,
+            catRegistered: users[index].registered,
+        }
     })
     
     this.renderCards(combinedData);
@@ -62,11 +68,23 @@ function renderCards(lista) {
                         <i title="Remove Like :(" class="icon icon-heart-full"></i>
                     </h2>
                     <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices erat nec metus fermentum gravida.</p>
+                        ${element.catLocation.street.name},
+                        ${element.catLocation.street.number},
+                        ${element.catLocation.street.name},
+                        ${element.catLocation.city}
+                        ${element.catLocation.postcode}
+                    </p>
+                    <p class="extra">
+                        since: ${element.catRegistered.date.substring(0, 4)}
+                        - 
+                         ${element.catGender}
+                        -
+                        age: ${element.catRegistered.age}
+                    </p>
                     <div class="status">
                         <span>
                             ${element.id}
-                            ${element.catGender}
+                           
                         </span>
                         <div>
                             <img class="avatar" src="assets/img/Avatar-1.png" alt="avatar1" />
