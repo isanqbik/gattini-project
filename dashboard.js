@@ -1,5 +1,6 @@
 let users = [];
 let cats = [];
+const cardContainer = document.querySelector(".cards-container");    
 
 async function getData(url){
     try {
@@ -9,8 +10,10 @@ async function getData(url){
     } 
     catch (error) {
         console.log(`Errore del metodo è ${error}`);  
-    }  
+    }
 }
+
+
 
 async function main() {
     cats = await getData('https://api.thecatapi.com/v1/images/search?limit=20');
@@ -26,29 +29,82 @@ async function main() {
             catGender: users[index].gender, 
             catLocation: users[index].location,
             catRegistered: users[index].registered,
+            catPreferite: false,
         }
     })
     
     this.renderCards(combinedData);
 
     for (i = 0; i < combinedData.length; i++) {
-        console.log(`gattino se llama ${combinedData[i].catName.first} con su foto ${combinedData[i].url}`);
+        //console.log(`gattino se llama ${combinedData[i].catName.first} con su foto ${combinedData[i].url}`);
+    }    
+
+    const viewLikedBtn = document.querySelector(".viewLiked");
+    viewLikedBtn.addEventListener("click", function() {
+        filterLiked();
+    });
+
+    function filterLiked() {
+        
+        viewLikedBtn.classList.toggle("loved-active");
+        
+        let filterByLiked = combinedData.filter(cat => cat.catPreferite);
+
+        if (viewLikedBtn.classList.contains("loved-active")){
+
+            if(filterByLiked.length > 0){
+                renderCards(filterByLiked);
+                //likeAction(filterByLiked);  
+            } else {
+                cardContainer.innerHTML = `
+                    <div class="no-results">
+                        <h2>:(</h2>
+                        <h4>non ci sono cats preferiti</h4>
+                    </div>
+                `;
+            }
+        }else{
+            renderCards(combinedData);
+            //likeAction(combinedData);
+        }
     }
+
+    searchCat.addEventListener("change", (e) => {
+        if (e.target.value) {
+            filterBySearch(e.target.value);
+        }else{
+            console.log("search empty");
+            renderCards(combinedData);
+            //likeAction(combinedData);
+        } 
+    });
+
+    function filterBySearch(search){
+        
+        console.log(search);
+        console.log(combinedData);
+        
+        let filterBySearch = combinedData.filter((cat) => cat.catName.first.toLowerCase().includes(search.toLowerCase()));
+        console.log(filterBySearch);
+        renderCards(filterBySearch);
+        //likeAction(filterBySearch);
+        
+    }
+
+
+    // removeItem(combinedData);
+    // likeAction(combinedData);
 }
 main();
 
 function renderCards(lista) {
-
-    console.log(lista);
-
+    console.log("render");
     if(lista){
-
-        const cardContainer = document.querySelector(".cards-container");    
         cardContainer.innerHTML = ""; // remove loader placeholder
-
         lista.forEach((element, i) => {
             const card = document.createElement('div');
             card.classList.add('cat-card');
+            card.id = "idCat" + element.id;
 
             card.innerHTML = `
                 <figure style="background-image:url('${element.url}');">
@@ -65,7 +121,9 @@ function renderCards(lista) {
                         ${element.catName.title}
                         ${element.catName.first}
                         ${element.catName.last}
-                        <i title="Remove Like :(" class="icon icon-heart-full"></i>
+                        <i liked-status="${element.catPreferite}" id="${element.id}" title="" class="btn-heart icon icon-heart-outline 
+                        ${checkPreferit(element)}
+                        "></i>
                     </h2>
                     <p class="description">
                         ${element.catLocation.street.name},
@@ -81,10 +139,10 @@ function renderCards(lista) {
                         -
                         age: ${element.catRegistered.age}
                     </p>
+                    <div id="${element.id}" class="btnRemove">Remove</div>
                     <div class="status">
                         <span>
                             ${element.id}
-                           
                         </span>
                         <div>
                             <img class="avatar" src="assets/img/Avatar-1.png" alt="avatar1" />
@@ -95,24 +153,83 @@ function renderCards(lista) {
                 </div>
             `;
             cardContainer.append(card);
-        });
-        
-        const imgs = document.querySelectorAll(".card-img"); 
 
-        imgs.forEach(img => { 
-            img.onload = function() {
-                console.log("La imagen ha sido cargada completamente.");
-                this.nextElementSibling.remove(); 
-            }; 
-            img.onerror = function() { 
-                console.log("Hubo un error al cargar la imagen.");
-            };
         });
+
+        renderImgSpinner();
+
+        removeItem(lista);
+        likeAction(lista);
+        
     }
 }
 
+function checkPreferit(element){
+    return element.catPreferite ? 'icon-heart-full': '';
+}
+
+
+function removeItem(combinedData){
+    const iconRemoves = document.querySelectorAll('.btnRemove');
+    iconRemoves.forEach((iconRemove, index) => {
+        iconRemove.addEventListener("click", (e) => {
+            e.preventDefault();
+            let index = combinedData.findIndex(x => x.id === iconRemove.id )
+            console.log(combinedData[index]);
+            combinedData.splice(index, 1);
+            renderCards(combinedData);
+            //likeAction(combinedData);
+        })
+    });
+}
+
+
+function likeAction(combinedData) {
+    const iconHearts = document.querySelectorAll(".btn-heart");
+    iconHearts.forEach((iconHeart, index) => {
+        iconHeart.addEventListener("click", (e) => {
+            e.preventDefault();
+            iconHeart.classList.toggle("icon-heart-full");
+
+            let likedItem = iconHeart.parentNode.parentNode.parentNode;
+
+            let item = combinedData.findIndex(x => x.id === iconHeart.id )
+
+            if (combinedData[item].catPreferite) {
+                likedItem.classList.remove("liked-cat");
+                //localStorage.removeItem("Cat_" + likedItem.id, "like");
+                combinedData[item].catPreferite = false;
+                console.log("remove favorite" + combinedData[item].catPreferite);
+                console.log(combinedData);
+                renderCards(combinedData);
+            } else {
+                likedItem.classList.add("liked-cat");
+                //localStorage.setItem("Cat_" + likedItem.id, "like");
+                combinedData[item].catPreferite = true;
+                console.log("add to favorite" + combinedData[item].catPreferite);
+                console.log(combinedData);
+                renderCards(combinedData);
+            }
+        });
+    });
+}
+
+function renderImgSpinner(){
+    const imgs = document.querySelectorAll(".card-img"); 
+
+    imgs.forEach(img => { 
+        img.onload = function() {
+            //console.log("La imagen ha sido cargada completamente.");
+            this.nextElementSibling.remove(); 
+        }; 
+        img.onerror = function() { 
+            //console.log("Hubo un error al cargar la imagen.");
+        };
+    });
+}
+
+
 document.addEventListener("DOMContentLoaded", function() { 
-    console.log("dom loaded");
-    
+    //console.log("dom loaded");
 });
 

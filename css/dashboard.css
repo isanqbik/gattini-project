@@ -43,6 +43,7 @@ header {
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: center;
+        
         .icons-tool {
             display: flex;
             span {
@@ -50,6 +51,10 @@ header {
                 margin: 0 10px;
                 position: relative;
                 cursor: pointer;
+                color: #fff;
+                &.loved-active {
+                    color: rgb(216, 17, 234);
+                }
             }
             .notification-number {
                 padding: 1px 6px;
@@ -164,7 +169,7 @@ header {
         padding: 40px 15px;
         width: 100%;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         @media only screen and (min-width: 450px) {
             padding: 40px 0 40px 20px;
@@ -181,6 +186,18 @@ header {
         align-items: stretch;
         justify-content: flex-start;
         gap: 20px;
+        width: 100%;
+
+        .no-results {
+            text-align: center;
+            font-size: 32px;
+            margin:20px;
+            width: 100%;
+            h2 {
+                margin-bottom: 20px;
+            }
+        }
+
         .cat-card {
             display: flex;
             flex-direction: column;
@@ -209,6 +226,11 @@ header {
                 transform: scale(1.03);
                 background-color: #f8f8f8;
                 box-shadow: 0 0 15px #0000002d;
+            }
+
+
+            &.liked-cat {
+                border:0px solid red;
             }
 
             figure {
@@ -268,7 +290,8 @@ header {
                 flex-direction: column;
                 justify-content: stretch;
                 height: -webkit-fill-available;
-                
+
+            
                 h2 {
                     font-size: 16px;
                     font-weight: 500;
@@ -284,6 +307,11 @@ header {
                         right: 0;
                         top:0;
                         cursor: pointer;   
+                    }
+                    .icon {
+                        &.icon-heart-full{
+                            background-image: url('../assets/icons/icon-heart-full.png') !important;
+                        }
                     }
                 }
                 .description {
