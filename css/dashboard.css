@@ -43,9 +43,43 @@ header {
         flex-direction: row;
         flex-wrap: nowrap;
         align-items: center;
+
+        .search-box {
+            width: 120px;
+            position: relative;
+            overflow: hidden;
+            &.expanded {
+                input {
+                    width: 120px;
+                    transform: translateX(0);
+                }
+            }
+            
+            input {
+                transition: all 0.2s;
+                transform: translateX(110%);
+                border:1px solid white;
+                background-color: transparent;
+                color: #333;
+                border-radius: 3px;
+                padding: 3px 5px;
+                outline: none;
+                
+                background-color: rgba(255, 255, 255, 0.6);
+                
+                &:focus {
+                    color: #333;
+                    background-color: rgba(255, 255, 255, 0.814);
+                    border: 1px solid white;
+                    
+                }
+
+            }
+        }
         
         .icons-tool {
             display: flex;
+            align-items: center;
             span {
                 display: block;
                 margin: 0 10px;

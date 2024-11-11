@@ -13,8 +13,6 @@ async function getData(url){
     }
 }
 
-
-
 async function main() {
     cats = await getData('https://api.thecatapi.com/v1/images/search?limit=20');
     let userCall = await getData('https://randomuser.me/api/?results=10');
@@ -54,7 +52,6 @@ async function main() {
 
             if(filterByLiked.length > 0){
                 renderCards(filterByLiked);
-                //likeAction(filterByLiked);  
             } else {
                 cardContainer.innerHTML = `
                     <div class="no-results">
@@ -65,7 +62,6 @@ async function main() {
             }
         }else{
             renderCards(combinedData);
-            //likeAction(combinedData);
         }
     }
 
@@ -75,7 +71,6 @@ async function main() {
         }else{
             console.log("search empty");
             renderCards(combinedData);
-            //likeAction(combinedData);
         } 
     });
 
@@ -87,15 +82,15 @@ async function main() {
         let filterBySearch = combinedData.filter((cat) => cat.catName.first.toLowerCase().includes(search.toLowerCase()));
         console.log(filterBySearch);
         renderCards(filterBySearch);
-        //likeAction(filterBySearch);
         
     }
-
-
-    // removeItem(combinedData);
-    // likeAction(combinedData);
 }
 main();
+
+searchTrigger.addEventListener("click", (e) => {
+    console.log("trigger");
+    document.querySelector(".search-box").classList.toggle("expanded");
+});
 
 function renderCards(lista) {
     console.log("render");
@@ -197,14 +192,12 @@ function likeAction(combinedData) {
 
             if (combinedData[item].catPreferite) {
                 likedItem.classList.remove("liked-cat");
-                //localStorage.removeItem("Cat_" + likedItem.id, "like");
                 combinedData[item].catPreferite = false;
                 console.log("remove favorite" + combinedData[item].catPreferite);
                 console.log(combinedData);
                 renderCards(combinedData);
             } else {
                 likedItem.classList.add("liked-cat");
-                //localStorage.setItem("Cat_" + likedItem.id, "like");
                 combinedData[item].catPreferite = true;
                 console.log("add to favorite" + combinedData[item].catPreferite);
                 console.log(combinedData);
