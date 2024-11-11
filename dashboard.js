@@ -52,7 +52,9 @@ async function main() {
 
             if(filterByLiked.length > 0){
                 renderCards(filterByLiked);
+                cardContainer.classList.add("loved");
             } else {
+                cardContainer.classList.remove("loved");
                 cardContainer.innerHTML = `
                     <div class="no-results">
                         <h2>:(</h2>
@@ -61,6 +63,7 @@ async function main() {
                 `;
             }
         }else{
+            cardContainer.classList.remove("loved");
             renderCards(combinedData);
         }
     }
@@ -91,6 +94,15 @@ searchTrigger.addEventListener("click", (e) => {
     console.log("trigger");
     document.querySelector(".search-box").classList.toggle("expanded");
 });
+
+AddCat.addEventListener("click", (e) => {
+    console.log("New Cat Add");
+    const card = document.createElement('div');
+    card.classList.add('cat-card');
+    cardContainer.append(card);
+});
+
+
 
 function renderCards(lista) {
     console.log("render");
@@ -173,6 +185,16 @@ function removeItem(combinedData){
             console.log(combinedData[index]);
             combinedData.splice(index, 1);
             renderCards(combinedData);
+
+            if (cardContainer.childNodes.length === 0){
+                cardContainer.innerHTML = `
+                <div class="no-results">
+                    <h2>:(</h2>
+                    <h4>non ci sono cats</h4>
+                </div>
+                `;
+            }
+            return;
             //likeAction(combinedData);
         })
     });
@@ -195,7 +217,25 @@ function likeAction(combinedData) {
                 combinedData[item].catPreferite = false;
                 console.log("remove favorite" + combinedData[item].catPreferite);
                 console.log(combinedData);
+                
+                if(cardContainer.classList.contains("loved")){
+                    console.log("destroy it");
+                    console.log(combinedData.length);
+                    likedItem.remove();
+
+                    if (cardContainer.childNodes.length === 0){
+                        cardContainer.innerHTML = `
+                        <div class="no-results">
+                            <h2>:(</h2>
+                            <h4>non ci sono cats preferiti</h4>
+                        </div>
+                        `;
+                    }
+                    return;
+                }
+                
                 renderCards(combinedData);
+
             } else {
                 likedItem.classList.add("liked-cat");
                 combinedData[item].catPreferite = true;
