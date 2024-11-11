@@ -97,10 +97,40 @@ searchTrigger.addEventListener("click", (e) => {
 
 AddCat.addEventListener("click", (e) => {
     console.log("New Cat Add");
+    addNewCat();
+    
+
+});
+
+async function addNewCat() {
     const card = document.createElement('div');
     card.classList.add('cat-card');
-    cardContainer.append(card);
-});
+    card.innerHTML = `
+        <img class="avatar" srcset="
+        assets/img/cat-A@2x.jpg 2x,
+        assets/img/cat-A.jpg 1x"
+        src="assets/img/cat-A.jpg" alt="MEEAAAOOOWWW" />
+        <div class="card-info">
+            <h2>
+                Ali play (FAKE HARDCODED CARD)
+                <i title="Remove Like :(" class="icon icon-heart-full"></i>
+            </h2>
+            <p class="description">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultrices erat nec metus fermentum gravida.</p>
+            <div class="status">
+                <span>
+                    Just now
+                </span>
+                <div>
+                    <img class="avatar" src="assets/img/Avatar-1.png" alt="avatar1" />
+                    <img class="avatar" src="assets/img/Avatar-2.png" alt="avatar 2" />
+                    <img class="avatar" src="assets/img/Avatar-3.png" alt="avatar 3" />
+                </div>
+            </div>
+        </div>
+        `;
+    cardContainer.prepend(card);
+}
 
 
 
