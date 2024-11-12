@@ -216,8 +216,8 @@ header {
         }
         .add-btn {
             position: absolute;
-            right: 15px;
-            top:15px;
+            right: 20px;
+            top:10px;
             background-color:var(--corporate-blue);
             color: white;
             padding: 3px 6px;
