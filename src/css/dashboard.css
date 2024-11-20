@@ -419,22 +419,7 @@ header {
                     color: #343434;
                     font-style: italic;
                 }
-                .btnRemove {
-                    cursor: pointer;
-                    border: 1px salmon;
-                    color: rgb(234, 17, 64);
-                    border: 1px solid rgb(234, 17, 64);
-                    padding: 3px 6px;
-                    border-radius: 4px;
-                    display: flex;
-                    min-width: auto;
-                    max-width: fit-content;
-                    transition: all 0.3s;
-                    &:hover {
-                        background-color: rgb(234, 17, 64);
-                        color: white;
-                    }
-                }
+                
                 .status {
                     display: flex;
                     align-items: center;
@@ -442,6 +427,32 @@ header {
                     color: #000000a0;
                     font-size: 13px;
                     margin-top: auto;
+                    
+                    .btnRemove {
+                        cursor: pointer;
+                        border: 1px salmon;
+                        color: rgb(234, 17, 64);
+                        border: 1px solid rgb(234, 17, 64);
+                        padding: 3px 6px;
+                        border-radius: 4px;
+                        min-width: auto;
+                        transition: all 0.3s;
+                        display: flex;
+                        flex-direction: row;
+                        i {
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            max-width: 50px;
+                            display: inline-block;
+                            margin-left: 5px;
+                        }
+                        &:hover {
+                            background-color: rgb(234, 17, 64);
+                            color: white;
+                        }
+                    }
+                    
                     img {
                         width: 32px;
                         height: 32px;

@@ -89,11 +89,11 @@ function renderCards(lista) {
                         -
                         age: ${element.catRegistered.age}
                     </p>
-                    <div id="${element.id}" class="btnRemove">Remove</div>
                     <div class="status">
-                        <span>
-                            ${element.id}
-                        </span>
+                        <div id="${element.id}" class="btnRemove">
+                            Remove: <i>${element.id}</i>
+                        </div>
+                    
                         <div>
                             <img class="avatar" src="../../assets/img/Avatar-1.png" alt="avatar1" />
                             <img class="avatar" src="../../assets/img/Avatar-2.png" alt="avatar 2" />
@@ -160,7 +160,7 @@ function renderImgSpinner() {
             (_a = img.nextElementSibling) === null || _a === void 0 ? void 0 : _a.remove();
         };
         img.onerror = function () {
-            // console.log("Hubo un error al cargar la imagen.");
+            console.log("Hubo un error al cargar la imagen.");
         };
     });
 }

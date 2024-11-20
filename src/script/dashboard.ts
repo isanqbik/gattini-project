@@ -95,11 +95,11 @@ function renderCards(lista: CombinedData[]): void {
                         -
                         age: ${element.catRegistered.age}
                     </p>
-                    <div id="${element.id}" class="btnRemove">Remove</div>
                     <div class="status">
-                        <span>
-                            ${element.id}
-                        </span>
+                        <div id="${element.id}" class="btnRemove">
+                            Remove: <i>${element.id}</i>
+                        </div>
+                    
                         <div>
                             <img class="avatar" src="../../assets/img/Avatar-1.png" alt="avatar1" />
                             <img class="avatar" src="../../assets/img/Avatar-2.png" alt="avatar 2" />
