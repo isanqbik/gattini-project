@@ -177,7 +177,7 @@ function renderImgSpinner(): void {
         };
 
         img.onerror = function(this: HTMLImageElement) {
-            // console.log("Hubo un error al cargar la imagen.");
+            console.log("Hubo un error al cargar la imagen.");
         };
     });
 }

@@ -49,6 +49,11 @@ header {
             width: 120px;
             position: relative;
             overflow: hidden;
+            
+            @media only screen and (max-width: 599px) {
+                position: absolute;
+                top: 55px;
+            }
             &.expanded {
                 input {
                     width: 120px;
@@ -87,9 +92,25 @@ header {
                 position: relative;
                 cursor: pointer;
                 color: #fff;
+                &.view-liked {
+                    position: relative;
+                    width: 16px;
+                    height: 16px;
+
+                    &:before {
+                        content:"♡";
+                        font-size: 24px;
+                        line-height: 0.65;
+                    }
+                }
                 &.loved-active {
                     color: rgb(216, 17, 234);
                     font-weight: 700;
+                    &::before{
+                        font-size: 16px;
+                        content:"❤︎";
+                        line-height: 0.5;
+                    }
                 }
             }
             .notification-number {
