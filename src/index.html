@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Gattini project - Sign Up</title>
+        <title>Gattini project - Home page</title>
         <link href="css/reset.css" type="text/css" rel="stylesheet" />
         <link href="css/common.css" type="text/css" rel="stylesheet" />
         <link href="css/styles-home.css" type="text/css" rel="stylesheet" />
@@ -10,11 +10,12 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-        <script defer src="./signup.js"></script>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16x16.png">
+        <script type="module" defer src="../out/index.js"></script>
+
     </head>
     <body>
         <div class="home-container">
@@ -27,49 +28,46 @@
                     <div class="logo-box">
                         <div class="logo">
                             <img srcset="
-                                assets/img/logo@2x.png 2x,
-                                assets/img/logo.png 1x"
-                                src="assets/img/logo.png" alt="Gattini Logo" />
+                                ../../assets/img/logo@2x.png 2x,
+                                ../../assets/img/logo.png 1x"
+                                src="../../assets/img/logo.png" alt="Gattini Logo" />
                             <h1>Gattini</h1>
                         </div>
                         <div class="claim">Bei gattini dal 1982</div>
                     </div>
                     <div class="center-box">
                         <nav>
-                            <a href="index.html">Login</a>
-                            <a href="#" class="active">Sign up</a>
+                            <a href="#" class="active">Login</a>
+                            <a href="signup.html">Sign up</a>
                         </nav>
 
                         <div class="form-box">
-                            <form id="signInForm" action="index.html">
+                            <form id="loginForm" action="dashboard.html">
                                 <fieldset>
-                                    <i class="icon icon-phone"></i>
-                                    <input type="tel" id="phone-number" placeholder="Phone number "/>
-                                    <p id="telNumberError" class="error">
-                                        Telefon number must be 8 numbers 
+                                    <i class="icon icon-user"></i>
+                                    <input type="text" id="input-username" placeholder="username: admin or user "/>
+                                    <p id="userError" class="error">
+                                        user must contain 'gattini' and max chars 20 char
                                     </p>
                                 </fieldset>
-                                <fieldset class="get-code">
+                                <fieldset>
                                     <i class="icon icon-lock"></i>
-                                    <input type="text" id="verification-number" placeholder="Verification Code "/>
-                                    <button id="btnGetCode" class="c-button outline">Get Code</button>
-                                    <div class="error-place">
-                                        <p id="inputVerificationError" class="error">
-                                            Wrong Verification code or missin
-                                        </p>
-                                    </div>
+                                    <input type="password" id="input-password" placeholder="Password: enter your password "/>
+                                    <p id="passError" class="error">
+                                        Password must have between 8 and 20 chars and special char
+                                    </p>
                                 </fieldset>
 
-                                <!-- <fieldset class="remember">
+                                <fieldset class="remember">
                                     <label>
-                                        <input type="checkbox" checked />
+                                        <input type="checkbox" id="rememberme" checked />
                                         Remember me
                                     </label>
                                     <a href="#">Forgot?</a>
-                                </fieldset> -->
+                                </fieldset>
 
                                 <div class="button-set">
-                                    <button id="btn-sign" class="c-button solid">Sign in</button>
+                                    <button type="submit" class="c-button solid" id="btn-sign-in">Sign in</button>
                                 </div>
                             </form>
                         </div>
@@ -97,9 +95,9 @@
             <h1>Hello world!</h1>
         </div>
         <img srcset="
-            assets/img/cover-home@2x.jpg 2x,
-            assets/img/cover-home.jpg 1x"
-            src="assets/img/cover-home.jpg" />
+            ../../assets/img/cover-home@2x.jpg 2x,
+            ../../assets/img/cover-home.jpg 1x"
+            src="../../assets/img/cover-home.jpg" />
         -->
     </body>
 </html>

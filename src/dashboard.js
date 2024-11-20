@@ -107,9 +107,9 @@ async function addNewCat() {
     card.classList.add('cat-card');
     card.innerHTML = `
         <img class="avatar" srcset="
-        assets/img/cat-A@2x.jpg 2x,
-        assets/img/cat-A.jpg 1x"
-        src="assets/img/cat-A.jpg" alt="MEEAAAOOOWWW" />
+        ../../assets/img/cat-A@2x.jpg 2x,
+        ../../assets/img/cat-A.jpg 1x"
+        src="../../assets/img/cat-A.jpg" alt="MEEAAAOOOWWW" />
         <div class="card-info">
             <h2>
                 Ali play (FAKE HARDCODED CARD)
@@ -122,9 +122,9 @@ async function addNewCat() {
                     Just now
                 </span>
                 <div>
-                    <img class="avatar" src="assets/img/Avatar-1.png" alt="avatar1" />
-                    <img class="avatar" src="assets/img/Avatar-2.png" alt="avatar 2" />
-                    <img class="avatar" src="assets/img/Avatar-3.png" alt="avatar 3" />
+                    <img class="avatar" src="../../assets/img/Avatar-1.png" alt="avatar1" />
+                    <img class="avatar" src="../../assets/img/Avatar-2.png" alt="avatar 2" />
+                    <img class="avatar" src="../../assets/img/Avatar-3.png" alt="avatar 3" />
                 </div>
             </div>
         </div>
@@ -182,9 +182,9 @@ function renderCards(lista) {
                             ${element.id}
                         </span>
                         <div>
-                            <img class="avatar" src="assets/img/Avatar-1.png" alt="avatar1" />
-                            <img class="avatar" src="assets/img/Avatar-2.png" alt="avatar 2" />
-                            <img class="avatar" src="assets/img/Avatar-3.png" alt="avatar 3" />
+                            <img class="avatar" src="../../assets/img/Avatar-1.png" alt="avatar1" />
+                            <img class="avatar" src="../../assets/img/Avatar-2.png" alt="avatar 2" />
+                            <img class="avatar" src="../../assets/img/Avatar-3.png" alt="avatar 3" />
                         </div>
                     </div>
                 </div>

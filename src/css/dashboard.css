@@ -168,31 +168,57 @@ header {
             
             li {
                 list-style: none;
-                padding:10px 5px 10px 20px; 
                 margin: 0 0 5px 0;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                
-                a {
-                    color: #000000D9;
-                    font-size: 14px;
-                    text-decoration: none;
-                    display: flex;
-                    align-items: center;
-                    width: 100%;
-                    padding: 3px 0;
-                    &:hover {
-                        opacity: 0.8;
+                &.voice-menu {
+                    .voice {
+                        padding:10px 5px 10px 20px; 
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+    
+                        span {
+                            color: #000000D9;
+                            font-size: 14px;
+                            text-decoration: none;
+                            display: flex;
+                            align-items: center;
+                            width: 100%;
+                            padding: 3px 0;
+                            cursor: pointer;
+                            &:hover {
+                                opacity: 0.8;
+                            }
+                            i {
+                                margin-right: 10px;
+                            }
+                        }
+                        .icon-chevron {
+                            cursor: pointer;
+                            padding: 10px;
+                            margin-right: 5px;
+                            transition: all 0.24s;
+                        }
                     }
-                    i {
-                        margin-right: 10px;
+                    .sub-menu {
+                        display: none;
                     }
-                }
-                .icon-chevron {
-                    cursor: pointer;
-                    padding: 10px;
-                    margin-right: 5px;
+                    &.expanded {
+                        .icon-chevron {
+                            transform: rotate(-180deg);
+                        }
+                        .sub-menu {
+                            display: flex;
+                            flex-direction: column;
+                            span {
+                                display: block;
+                                padding: 10px 25px;
+                                cursor: pointer;
+                                &:hover {
+                                    background-color: rgb(246, 242, 216);
+                                }
+                            }
+                        }
+                    }
                 }
                 &:last-child {
                     border-top: 1px solid #ccc;
@@ -356,7 +382,7 @@ header {
                     }
                     .icon {
                         &.icon-heart-full{
-                            background-image: url('../assets/icons/icon-heart-full.png') !important;
+                            background-image: url('../../../assets/icons/icon-heart-full.png') !important;
                         }
                     }
                 }
@@ -371,6 +397,22 @@ header {
                     font-size: 13px;
                     color: #343434;
                     font-style: italic;
+                }
+                .btnRemove {
+                    cursor: pointer;
+                    border: 1px salmon;
+                    color: rgb(234, 17, 64);
+                    border: 1px solid rgb(234, 17, 64);
+                    padding: 3px 6px;
+                    border-radius: 4px;
+                    display: flex;
+                    min-width: auto;
+                    max-width: fit-content;
+                    transition: all 0.3s;
+                    &:hover {
+                        background-color: rgb(234, 17, 64);
+                        color: white;
+                    }
                 }
                 .status {
                     display: flex;

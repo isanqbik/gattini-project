@@ -1,0 +1,23 @@
+{
+    
+    "compilerOptions": {
+
+        "target": "es6", // Objetivo de compilación 
+        "module": "esnext", // Sistema de módulos 
+        "moduleResolution": "node", // Resolución de módulos estilo Node.js 
+        "outDir": "out", // Directorio de salida para archivos compilados 
+        "strict": true, // Habilita todas las verificaciones estrictas 
+        "esModuleInterop": true, // Interoperabilidad con módulos ES 
+        "forceConsistentCasingInFileNames": true, // Enforce consistent casing in file names 
+        "skipLibCheck": true, // Omite la verificación de tipo de los archivos de definición 
+        "resolveJsonModule": true, // Permite la importación de archivos JSON 
+        "allowSyntheticDefaultImports": true,
+        "strictNullChecks": true, // usar elvis key ? para controllar
+        "sourceMap": true
+        //"rootDir": "./", // Directorio raíz de los archivos fuente 
+
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
+}
