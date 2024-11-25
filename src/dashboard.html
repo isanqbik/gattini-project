@@ -19,6 +19,11 @@
     <body>
         <header>
             <div class="logo-box">
+                <div class="hamburguer">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
                 <img class="logo"
                     src="../../assets/img/logo.png" alt="Gattini Logo" />
                 <h1>Gattini</h1>
@@ -50,45 +55,56 @@
             </div>
         </header>
         <div class="main-container">
-            <aside>
+            <aside class="sidebar expanded">
                 <ul>
                     <li class="voice-menu">
                         <div class="voice">
+                            <i class="icon icon-dashboard"  title="Dashboard"></i>
                             <span>
-                                <i class="icon icon-dashboard"  title="Dashboard"></i>
                                 Dashboard
                             </span>
                             <i class="icon icon-chevron"  title="Open block"></i>
                         </div>
                         <div class="sub-menu">
-                            <span>Submenu voice 1-1</span>
-                            <span>Submenu voice 1-2</span>
+                            <div>
+                                <i class="icon icon-profile" title="Profilo"></i>
+                                <span>Submenu voice 2-1</span>
+                            </div>
+                            <div>
+                                <i class="icon icon-profile" title="Profilo"></i>
+                                <span>Submenu voice 2-2</span>
+                            </div>
                         </div>
                     </li>
                     <li class="voice-menu">
                         <div class="voice">
+                            <i class="icon icon-profile" title="Profilo"></i>
                             <span>
-                                <i class="icon icon-profile" title="Profilo"></i>
                                 Profile
                             </span>
                             <i class="icon icon-chevron"  title="Open block"></i>
                         </div>
                         <div class="sub-menu">
-                            <span>Submenu voice 2-1</span>
-                            <span>Submenu voice 2-2</span>
+                            <div>
+                                <i class="icon icon-profile" title="Profilo"></i>
+                                <span>Submenu voice 2-1</span>
+                            </div>
+                            <div>
+                                <i class="icon icon-profile" title="Profilo"></i>
+                                <span>Submenu voice 2-2</span>
+                            </div>
                         </div>
                     </li>
                     <li class="voice-menu">
-                        <div class="voice">
-                            <a href="index.html">
-                                <i class="icon icon-menu" title="Show Menu"></i>
-                            </a>
+                        <div class="voice collapse-sidebar">
+                            <i class="icon icon-menu" title="Show Menu"></i>
                         </div>
                     </li>
                 </ul>
             </aside>
             <div class="main-content">
                 <div id="AddCat" class="add-btn">Add new Cat</div>
+                <div class="counter-number"></div>
                 <div class="cards-container">
                     <div class="spinner"></div>
                     <!-- single card start

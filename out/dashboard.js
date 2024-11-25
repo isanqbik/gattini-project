@@ -17,6 +17,10 @@ const searchCat = document.querySelector("#searchCat");
 const AddCat = document.querySelector("#AddCat");
 const viewLikedBtn = document.querySelector(".viewLiked");
 const menuVoices = document.querySelectorAll(".voice");
+const sidebar = document.querySelector(".sidebar");
+const collapseSidebar = document.querySelector(".collapse-sidebar");
+const hamburguerBtn = document.querySelector(".hamburguer");
+const catsCounter = document.querySelector(".counter-number");
 function getData(url) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -91,7 +95,7 @@ function renderCards(lista) {
                     </p>
                     <div class="status">
                         <div id="${element.id}" class="btnRemove">
-                            Remove: <i>${element.id}</i>
+                            <span>Remove:</span> <i>${element.id}</i>
                         </div>
                     
                         <div>
@@ -109,6 +113,7 @@ function renderCards(lista) {
         renderImgSpinner();
         removeItem(lista);
         likeAction(lista);
+        updateCounter(lista);
     }
 }
 main();
@@ -127,10 +132,13 @@ function likeAction(lista) {
                 console.log("remove favorite" + lista[item].catPreferite);
                 console.log(lista);
                 if (cardContainer && cardContainer.classList.contains("loved")) {
+                    let filterByLiked = lista.filter(cat => cat.catPreferite);
                     console.log("destroy it");
                     console.log(lista.length);
                     likedItem.remove();
+                    renderCards(filterByLiked);
                     if (cardContainer.childNodes.length === 0) {
+                        catsCounter.style.display = "none";
                         cardContainer.innerHTML = `
                         <div class="no-results">
                             <h2>:(</h2>
@@ -151,6 +159,11 @@ function likeAction(lista) {
             }
         });
     });
+}
+function updateCounter(lista) {
+    catsCounter.innerHTML = `total elements to show: <span>${lista.length}</span>`;
+    catsCounter.style.display = "block";
+    console.log("update counter");
 }
 function renderImgSpinner() {
     const imgs = document.querySelectorAll('.card-img');
@@ -182,6 +195,7 @@ function filterLiked() {
             }
             else {
                 cardContainer.classList.remove("loved");
+                catsCounter.style.display = "none";
                 cardContainer.innerHTML = `
                     <div class="no-results">
                         <h2>:(</h2>
@@ -233,8 +247,10 @@ if (AddCat) {
     AddCat.addEventListener("click", (e) => {
         console.log("add card");
         addSingleCard();
+        AddCat.addEventListener('click', scrollToTop);
     });
 }
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 function addSingleCard() {
     return __awaiter(this, void 0, void 0, function* () {
         let singleCard;
@@ -263,6 +279,17 @@ if (menuVoices) {
             var _a;
             (_a = menuVoice.parentElement) === null || _a === void 0 ? void 0 : _a.classList.toggle("expanded");
         });
+    });
+}
+if (collapseSidebar) {
+    collapseSidebar.addEventListener("click", (e) => {
+        sidebar === null || sidebar === void 0 ? void 0 : sidebar.classList.toggle("expanded");
+    });
+}
+if (hamburguerBtn) {
+    hamburguerBtn.addEventListener("click", (e) => {
+        hamburguerBtn === null || hamburguerBtn === void 0 ? void 0 : hamburguerBtn.classList.toggle("open");
+        sidebar === null || sidebar === void 0 ? void 0 : sidebar.classList.toggle("open");
     });
 }
 if (searchCat) {

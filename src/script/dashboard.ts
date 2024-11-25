@@ -17,6 +17,13 @@ const viewLikedBtn = document.querySelector(".viewLiked") as HTMLElement;
 
 const menuVoices: NodeListOf<HTMLImageElement> | null = document.querySelectorAll(".voice") as NodeListOf<HTMLImageElement>;
 
+const sidebar = document.querySelector(".sidebar") as HTMLElement;
+const collapseSidebar = document.querySelector(".collapse-sidebar") as HTMLElement;
+const hamburguerBtn = document.querySelector(".hamburguer") as HTMLElement;
+
+const catsCounter = document.querySelector(".counter-number") as HTMLElement;
+
+
 async function getData(url:string): Promise<any>{
     try {
         let response = await fetch(url);
@@ -97,7 +104,7 @@ function renderCards(lista: CombinedData[]): void {
                     </p>
                     <div class="status">
                         <div id="${element.id}" class="btnRemove">
-                            Remove: <i>${element.id}</i>
+                            <span>Remove:</span> <i>${element.id}</i>
                         </div>
                     
                         <div>
@@ -116,6 +123,9 @@ function renderCards(lista: CombinedData[]): void {
         renderImgSpinner();
         removeItem(lista);
         likeAction(lista);
+
+        updateCounter(lista);
+
     }
 }
 
@@ -139,11 +149,14 @@ function likeAction(lista: CombinedData[]) {
                 console.log(lista);
                 
                 if(cardContainer && cardContainer.classList.contains("loved")){
+                    let filterByLiked:CombinedData[] = lista.filter(cat => cat.catPreferite);
                     console.log("destroy it");
                     console.log(lista.length);
                     likedItem.remove();
+                    renderCards(filterByLiked);
 
                     if (cardContainer.childNodes.length === 0){
+                        catsCounter.style.display = "none";
                         cardContainer.innerHTML = `
                         <div class="no-results">
                             <h2>:(</h2>
@@ -165,6 +178,13 @@ function likeAction(lista: CombinedData[]) {
             }
         });
     });
+}
+
+function updateCounter(lista: CombinedData[]): void {
+    catsCounter.innerHTML = `total elements to show: <span>${lista.length}</span>`;
+    catsCounter.style.display = "block";
+    console.log("update counter");
+    
 }
 
 function renderImgSpinner(): void {
@@ -206,6 +226,7 @@ function filterLiked() {
                 cardContainer.classList.add("loved");
             } else {
                 cardContainer.classList.remove("loved");
+                catsCounter.style.display = "none";
                 cardContainer.innerHTML = `
                     <div class="no-results">
                         <h2>:(</h2>
@@ -263,8 +284,11 @@ if (AddCat) {
     AddCat.addEventListener("click", (e: Event) => {
         console.log("add card");
         addSingleCard();
+        AddCat.addEventListener('click', scrollToTop);
     });
 }
+
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
 async function addSingleCard(): Promise<void> {
 let singleCard: CombinedData
@@ -287,6 +311,7 @@ let singleCard: CombinedData
         
         renderCards(lista);
 
+
     } catch (error) {
         console.error('Error in main function:', error);
     }
@@ -305,6 +330,19 @@ if (menuVoices) {
         menuVoice.addEventListener("click", (e: Event) => {
             menuVoice.parentElement?.classList.toggle("expanded");
         })
+    });
+}
+
+if (collapseSidebar) {
+    collapseSidebar.addEventListener("click", (e: Event) => {
+        sidebar?.classList.toggle("expanded");
+    });
+}
+
+if (hamburguerBtn) {
+    hamburguerBtn.addEventListener("click", (e: Event) => {
+        hamburguerBtn?.classList.toggle("open");
+        sidebar?.classList.toggle("open");
     });
 }
 
